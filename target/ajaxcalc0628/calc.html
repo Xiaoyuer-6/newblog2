@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajax计算器</title>
+    <script src="jquery-1.9.1.min.js"></script>
+    <script>
+        function mysub() {
+            //todo:非空效验
+            jQuery.getJSON("mycalc",{
+                "number1":jQuery("#num1").val(),//使用jQuery拿到前端的数，向后端发送请求；
+                "number2":jQuery("#num2").val()
+            },function (data) {//接受后端的响应信息；
+                if(data !=null && data.state==200){
+
+                    alert(data.sum);//输出后端数据；
+                }else {
+                    alert(data.msg);
+                }
+            });
+        }
+    </script>
+</head>
+<!--
+<div style="text-align: center;margin-top: 150px;">
+    <h1>胡玉的计算器-Ajax版本</h1>
+    数字1:&nbsp;&nbsp;<input id="num1" name="num1" type="number"><p></p>
+    数字2:&nbsp;&nbsp;<input id="num2" name="num2" type="number"><p></p>
+    <input type="button" value="提 交" onclick="mysub()">
+
+</div>
+-->
+<body>
+<div style="text-align: center;margin-top: 150px;">
+    <h1>计算器——Ajax版本</h1>
+      数字1&nbsp; :&nbsp;&nbsp;<input id="num1" name="num1" type="number"><p></p>
+      数字2&nbsp; :&nbsp;&nbsp;<input id="num2" name="num2" type="number"><p></p>
+      <input type="button" value="提  交" onclick="mysub()">
+</div>
+</body>
+</html>
